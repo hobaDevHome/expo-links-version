@@ -9,14 +9,22 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      },
+      "bundleIdentifier": "com.hobaexpoaccount.eartrainingapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.hobaexpoaccount.eartrainingapp"
+      "package": "com.hobaexpoaccount.eartrainingapp",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "bundler": "metro",
@@ -46,6 +54,9 @@
       "eas": {
         "projectId": "2132aa56-1928-4348-aaa0-57aebfff8a1d"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2132aa56-1928-4348-aaa0-57aebfff8a1d"
     }
   }
 }
