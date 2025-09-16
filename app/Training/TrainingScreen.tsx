@@ -14,6 +14,7 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Foundation from "@expo/vector-icons/Foundation";
 import { Maqam } from "@/constants/scales";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 type TrainingScreenParams = {
   id: string;
   scale: string;
@@ -69,7 +70,11 @@ const TrainingScreen = () => {
               marginBottom: 12,
             }}
           >
-            <AntDesign name="playcircleo" size={30} color="#fff" />
+            <MaterialCommunityIcons
+              name="weight-lifter"
+              size={28}
+              color="#fff"
+            />
           </View>
           <Text style={styles.activityTitle}>{trainingLevelLables.play}</Text>
         </TouchableOpacity>
