@@ -448,7 +448,7 @@ function AppContent() {
 }
 
 const styles = StyleSheet.create({
-  mobileContainer: { flex: 1, width: 400, justifyContent: "center" },
+  mobileContainer: { flex: 1, width: 360, justifyContent: "center" },
   switchContainer: { marginTop: 10, flexDirection: "row" },
   switch: { marginHorizontal: 10 },
   instContianer: {

@@ -12,17 +12,17 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useSettings } from "../context/SettingsContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-
+import { ScrollView } from "react-native";
 type RootStackParamList = {
-  "Home": undefined;
-  "BasicTraining": undefined;
-  "LearnTheMethod": undefined;
+  Home: undefined;
+  BasicTraining: undefined;
+  LearnTheMethod: undefined;
   "IntroGame/index": undefined;
-  "MelodicDictations": undefined;
-  "intervals": undefined;
-  "maqamat": undefined;
+  MelodicDictations: undefined;
+  intervals: undefined;
+  maqamat: undefined;
   "Training/index": undefined;
-  "playground": undefined;
+  playground: undefined;
   "Dictations/index": undefined;
 };
 
@@ -37,175 +37,184 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            alignSelf: state.language === "ar" ? "flex-end" : "flex-start",
-            marginLeft: state.language === "ar" ? 0 : 24,
-            marginRight: state.language === "ar" ? 24 : 0,
-          },
-        ]}
-      >
-        {state.labels.chooseAnAcitivity}
-      </Text>
-      {/* Buttons Container */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button1]}
-          onPress={() => navigateTo("IntroGame/index")}
-          activeOpacity={0.8}
+    <ScrollView
+      contentContainerStyle={{ flexGrow: 1 }}
+      style={{ flex: 1 }}
+      showsVerticalScrollIndicator={false}
+      horizontal={false}
+    >
+      <View style={styles.container}>
+        <Text
+          style={[
+            styles.sectionTitle,
+            {
+              alignSelf: state.language === "ar" ? "flex-end" : "flex-start",
+              marginLeft: state.language === "ar" ? 0 : 24,
+              marginRight: state.language === "ar" ? 24 : 0,
+            },
+          ]}
         >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+          {state.labels.chooseAnAcitivity}
+        </Text>
+        {/* Buttons Container */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button1]}
+            onPress={() => navigateTo("IntroGame/index")}
+            activeOpacity={0.8}
           >
-            <Ionicons name="game-controller" size={30} color="#fff" />
-          </View>
-          <Text style={styles.activityTitle}>{state.labels.introGame}</Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.testYouEar}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button2]}
-          onPress={() => navigateTo("LearnTheMethod")}
-        >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <Ionicons name="game-controller" size={30} color="#fff" />
+            </View>
+            <Text style={styles.activityTitle}>{state.labels.introGame}</Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.testYouEar}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button2]}
+            onPress={() => navigateTo("LearnTheMethod")}
           >
-            <MaterialIcons
-              name="school"
-              size={24}
-              color="#fff"
-              style={styles.buttonIcon}
-            />
-          </View>
-          <Text style={styles.activityTitle}>{state.labels.learnMethod}</Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.knowAboutMaqams}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button3]}
-          onPress={() => navigateTo("Training/index")}
-        >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <MaterialIcons
+                name="school"
+                size={24}
+                color="#fff"
+                style={styles.buttonIcon}
+              />
+            </View>
+            <Text style={styles.activityTitle}>{state.labels.learnMethod}</Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.knowAboutMaqams}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button3]}
+            onPress={() => navigateTo("Training/index")}
           >
-            <MaterialIcons
-              name="fitness-center"
-              size={24}
-              color="#fff"
-              style={styles.buttonIcon}
-            />
-          </View>
-          <Text style={styles.activityTitle}>{state.labels.basicTraining}</Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.timeForTraining}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button4]}
-          onPress={() => navigateTo("Dictations/index")}
-        >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <MaterialIcons
+                name="fitness-center"
+                size={24}
+                color="#fff"
+                style={styles.buttonIcon}
+              />
+            </View>
+            <Text style={styles.activityTitle}>
+              {state.labels.basicTraining}
+            </Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.timeForTraining}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button4]}
+            onPress={() => navigateTo("Dictations/index")}
           >
-            <FontAwesome
-              name="assistive-listening-systems"
-              color="#fff"
-              size={24}
-              style={styles.buttonIcon}
-            />
-          </View>
-          <Text style={styles.activityTitle}>
-            {state.labels.melodicDictations}
-          </Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.abitOfdictations}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button5]}
-          onPress={() => navigateTo("intervals")}
-        >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <FontAwesome
+                name="assistive-listening-systems"
+                color="#fff"
+                size={24}
+                style={styles.buttonIcon}
+              />
+            </View>
+            <Text style={styles.activityTitle}>
+              {state.labels.melodicDictations}
+            </Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.abitOfdictations}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button5]}
+            onPress={() => navigateTo("intervals")}
           >
-            <MaterialIcons
-              name="graphic-eq"
-              size={24}
-              color="#fff"
-              style={styles.buttonIcon}
-            />
-          </View>
-          <Text style={styles.activityTitle}>{state.labels.intervals}</Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.diffBetweenIntervals}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button6]}
-          onPress={() => navigateTo("maqamat")}
-        >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <MaterialIcons
+                name="graphic-eq"
+                size={24}
+                color="#fff"
+                style={styles.buttonIcon}
+              />
+            </View>
+            <Text style={styles.activityTitle}>{state.labels.intervals}</Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.diffBetweenIntervals}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button6]}
+            onPress={() => navigateTo("maqamat")}
           >
-            <MaterialIcons
-              name="library-music"
-              size={24}
-              color="#fff"
-              style={styles.buttonIcon}
-            />
-          </View>
-          <Text style={styles.activityTitle}>{state.labels.maqamat}</Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.guessTheMaqam}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.activityCard, styles.button7]}
-          onPress={() => navigateTo("playground")}
-        >
-          <View
-            style={{
-              flexDirection: state.language === "ar" ? "row-reverse" : "row",
-              marginBottom: 12,
-            }}
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <MaterialIcons
+                name="library-music"
+                size={24}
+                color="#fff"
+                style={styles.buttonIcon}
+              />
+            </View>
+            <Text style={styles.activityTitle}>{state.labels.maqamat}</Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.guessTheMaqam}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.activityCard, styles.button7]}
+            onPress={() => navigateTo("playground")}
           >
-            <MaterialIcons
-              name="piano"
-              size={24}
-              color="#fff"
-              style={styles.buttonIcon}
-            />
-          </View>
-          <Text style={styles.activityTitle}>{state.labels.Playground}</Text>
-          <Text style={styles.activitySubtitle}>
-            {state.labels.homePage.someFun}
-          </Text>
-        </TouchableOpacity>
+            <View
+              style={{
+                flexDirection: state.language === "ar" ? "row-reverse" : "row",
+                marginBottom: 12,
+              }}
+            >
+              <MaterialIcons
+                name="piano"
+                size={24}
+                color="#fff"
+                style={styles.buttonIcon}
+              />
+            </View>
+            <Text style={styles.activityTitle}>{state.labels.Playground}</Text>
+            <Text style={styles.activitySubtitle}>
+              {state.labels.homePage.someFun}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -213,8 +222,10 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FAFAFA", // Soft warm background color
+    backgroundColor: "#FAFAFA",
     alignItems: "center",
+    width: "100%", // 🔑 يمنع الزيادة بالعرض
+    maxWidth: "100%", // 🔑 برضو زيادة أمان
   },
   sectionTitle: {
     fontSize: 18,
@@ -226,13 +237,7 @@ const styles = StyleSheet.create({
 
     marginLeft: 24,
   },
-  backgroundImage: {
-    width: "90%",
-    height: Dimensions.get("window").height * 0.25, // Adjust the height based on your design
-    borderRadius: 5,
-    marginTop: 10,
-    overflow: "hidden",
-  },
+
   buttonContainer: {
     width: "90%",
     flexDirection: "row",
@@ -250,7 +255,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   activityCard: {
-    width: "47%",
+    width: "46%",
     aspectRatio: 1,
     borderRadius: 20,
     padding: 15,

@@ -21,6 +21,7 @@ import Foundation from "@expo/vector-icons/Foundation";
 
 import "react-native-gesture-handler";
 import { useSettings } from "@/context/SettingsContext";
+import { useRouter } from "expo-router";
 
 const languages = [
   { code: "en", name: "English", flag: "🇺🇸" },
@@ -34,13 +35,14 @@ const instruments = [
 ];
 function CustomDrawerContent() {
   const navigation = useNavigation<DrawerNavigationProp<any>>();
+  const router = useRouter();
   const { state, dispatch } = useSettings();
   const [autoQuestion, setAutoQuestion] = useState<boolean>(false);
   const [backToTonic, setBackToTonic] = useState<boolean>(false);
   const screens = [
-    { key: "index", name: state.labels.home, icon: "home-outline" },
+    { key: "", name: state.labels.home, icon: "home-outline" },
     {
-      key: "IntroGame/index",
+      key: "IntroGame",
       name: state.labels.introGame,
       icon: "game-controller-outline",
     },
@@ -50,12 +52,12 @@ function CustomDrawerContent() {
       icon: "create-outline",
     },
     {
-      key: "Training/index",
+      key: "Training",
       name: state.labels.basicTraining,
       icon: "pulse-outline",
     },
     {
-      key: "Dictations/index",
+      key: "Dictations",
       name: state.labels.melodicDictations,
       icon: "ear-outline",
     },
@@ -114,8 +116,8 @@ function CustomDrawerContent() {
   };
 
   const navigateTo = (screenName: string) => {
-    console.log("screenName", screenName);
-    navigation.navigate(screenName);
+    console.log("navigate to:", screenName);
+    router.push("/" + screenName);
     //navigation.dispatch(DrawerActions.closeDrawer());
   };
 
