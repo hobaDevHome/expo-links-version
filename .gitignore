@@ -41,3 +41,5 @@ app-example
 
 # Local Netlify folder
 .netlify
+
+/ios

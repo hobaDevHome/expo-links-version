@@ -34,31 +34,31 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [areFontsLoaded] = useFonts({
+
+  // تحميل الخطوط وأيضًا جلب الإعدادات من Context
+  const [fontsLoaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
+  // الخطوة 2: استخدام useEffect لمراقبة تحميل كل شيء (الخطوط والإعدادات)
   useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
+    // إذا تم تحميل الخطوط بنجاح
+    if (fontsLoaded) {
+      // قم بإخفاء السبلاش سكرين
+      SplashScreen.hideAsync();
     }
-    prepare();
-  }, []);
+  }, [fontsLoaded]); // هذا الـ hook سيعمل فقط عندما تتغير قيمة `fontsLoaded`
 
-  const onLayoutRootView = useCallback(async () => {
-    if (areFontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [areFontsLoaded]);
-
-  if (!areFontsLoaded) {
-    return null; // Return null if fonts are not loaded
+  // الخطوة 3: عرض "لا شيء" طالما أن الخطوط لم تُحمّل بعد
+  // هذا يمنع ظهور وميض أو شاشة بيضاء قبل عرض التطبيق
+  if (!fontsLoaded) {
+    return null;
   }
 
   return (
     <SettingsProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
           <AppContent />
         </GestureHandlerRootView>
       </ThemeProvider>
