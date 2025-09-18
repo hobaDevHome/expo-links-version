@@ -29,7 +29,6 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
-        <data android:scheme="com.hobaexpoaccount.eartrainingapp"/>
         <data android:scheme="exp+ear-training-app"/>
       </intent-filter>
     </activity>
